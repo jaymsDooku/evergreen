@@ -1,0 +1,9 @@
+name: ${name}
+main: dev.jayms.evergreen.Evergreen
+author: jayms
+version: ${version}
+depend: [CivModCore, NameLayer, Citadel, Bastion]
+api-version: 1.17
+permissions:
+    structures.op:
+        default: op
