@@ -1,0 +1,8 @@
+storage:
+  driver: sqlite
+  database: evergreen
+spawn:
+  world: world
+  x: -66.5
+  y: 256
+  z: 19.5

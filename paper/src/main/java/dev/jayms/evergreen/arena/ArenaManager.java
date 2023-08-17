@@ -12,6 +12,10 @@ public class ArenaManager {
 
     private static Map<String, Arena> arenas = new HashMap<>();
 
+    public static void setArenas(Map<String, Arena> newArenas) {
+        arenas = newArenas;
+    }
+
     public static void createArena(Arena arena) {
         arenas.put(arena.getName(), arena);
     }

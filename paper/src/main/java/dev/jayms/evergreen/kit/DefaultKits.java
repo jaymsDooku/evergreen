@@ -1,5 +1,7 @@
 package dev.jayms.evergreen.kit;
 
+import com.github.maxopoly.finale.misc.WeaponModifier;
+import dev.jayms.evergreen.elytra.AntiAirMissile;
 import dev.jayms.evergreen.utils.MaterialUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -76,7 +78,7 @@ public class DefaultKits {
                     .enchant(Enchantment.OXYGEN, 3, false)
                     .enchant(Enchantment.WATER_WORKER, 1, false));
         }
-        return helmIt.build();
+        return WeaponModifier.modifyWeapon(helmIt.build());
     }
 
     public static ItemStack boots(Material type) {
@@ -88,7 +90,7 @@ public class DefaultKits {
                     .enchant(Enchantment.PROTECTION_FALL, 4, false)
                     .enchant(Enchantment.DEPTH_STRIDER, 3, false));
         }
-        return bootsIt.build();
+        return WeaponModifier.modifyWeapon(bootsIt.build());
     }
 
     public static ItemStack chest(Material type) {
@@ -98,7 +100,7 @@ public class DefaultKits {
                     .enchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, false)
                     .enchant(Enchantment.DURABILITY, 3, false));
         }
-        return chestIt.build();
+        return WeaponModifier.modifyWeapon(chestIt.build());
     }
 
     public static ItemStack legs(Material type) {
@@ -108,7 +110,7 @@ public class DefaultKits {
                     .enchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, false)
                     .enchant(Enchantment.DURABILITY, 3, false));
         }
-        return legsIt.build();
+        return WeaponModifier.modifyWeapon(legsIt.build());
     }
 
     public static ItemStack dhelmet() {
@@ -152,7 +154,7 @@ public class DefaultKits {
                         .enchant(Enchantment.KNOCKBACK, 2, false))
                 .build();
 
-        return swordIt;
+        return WeaponModifier.modifyWeapon(swordIt);
     }
 
     public static ItemStack swordkb1() {
@@ -164,7 +166,7 @@ public class DefaultKits {
                         .enchant(Enchantment.KNOCKBACK, 1, false))
                 .build();
 
-        return swordIt;
+        return WeaponModifier.modifyWeapon(swordIt);
     }
 
     public static ItemStack sword() {
@@ -179,7 +181,58 @@ public class DefaultKits {
                         .enchant(Enchantment.FIRE_ASPECT, 2, false))
                 .build();
 
-        return swordIt;
+        return WeaponModifier.modifyWeapon(swordIt);
+    }
+
+    public static ItemStack bow() {
+        ItemStack bowIt = new ItemStackBuilder(Material.BOW, 1)
+                .meta(new ItemMetaBuilder()
+                        .enchant(Enchantment.ARROW_DAMAGE, 5, false)
+                        .enchant(Enchantment.ARROW_INFINITE, 1, false)
+                        .enchant(Enchantment.ARROW_FIRE, 1, false)
+                        .enchant(Enchantment.DURABILITY, 3, false)
+                )
+                .build();
+        return bowIt;
+    }
+
+    public static ItemStack bowPunch() {
+        ItemStack bowIt = new ItemStackBuilder(Material.BOW, 1)
+                .meta(new ItemMetaBuilder()
+                        .enchant(Enchantment.ARROW_DAMAGE, 5, false)
+                        .enchant(Enchantment.ARROW_INFINITE, 1, false)
+                        .enchant(Enchantment.ARROW_FIRE, 1, false)
+                        .enchant(Enchantment.ARROW_KNOCKBACK, 2, false)
+                        .enchant(Enchantment.DURABILITY, 3, false)
+                )
+                .build();
+        return bowIt;
+    }
+
+    public static ItemStack crossbow() {
+        ItemStack crossbowIt = new ItemStackBuilder(Material.CROSSBOW, 1)
+                .meta(new ItemMetaBuilder()
+                        .enchant(Enchantment.PIERCING, 4, false)
+                        .enchant(Enchantment.QUICK_CHARGE, 3, false)
+                        .enchant(Enchantment.DURABILITY, 3, false)
+                )
+                .build();
+        return crossbowIt;
+    }
+
+    public static ItemStack antiAirMissiles() {
+        ItemStack aaIt = AntiAirMissile.getAntiAirMissile().getItemStack();
+        aaIt.setAmount(64);
+        return aaIt;
+    }
+
+    public static ItemStack elytra() {
+        ItemStack elytra = new ItemStackBuilder(Material.ELYTRA, 1)
+                .meta(new ItemMetaBuilder()
+                        .enchant(Enchantment.DURABILITY, 3, false))
+                .build();
+
+        return elytra;
     }
 
     public static ItemStack carrots() {
@@ -208,6 +261,29 @@ public class DefaultKits {
                 .set(6, regen(150))
                 .set(7, strength(150))
                 .set(8, speed(150))
+
+                .set(24, regen(150))
+                .set(25, strength(150))
+                .set(26, speed(150))
+
+                .set(33, regen(150))
+                .set(34, strength(150))
+                .set(35, speed(150));
+
+        return result;
+    }
+
+    public static Kit elytraKit() {
+        Kit result = prot4Set()
+                .range(2, 36, health())
+                .set(5, fres(8 * 60))
+                .set(6, regen(150))
+                .set(7, strength(150))
+                .set(8, speed(150))
+
+                .set(9, elytra())
+                .set(18, crossbow())
+                .set(27, antiAirMissiles())
 
                 .set(24, regen(150))
                 .set(25, strength(150))

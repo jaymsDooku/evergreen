@@ -11,4 +11,5 @@ dependencies {
     compileOnly("com.comphenix.protocol:ProtocolLib:4.8.0")
     compileOnly("net.civmc.citadel:citadel-paper:5.1.2:dev")
     compileOnly("net.civmc.bastion:bastion-paper:3.0.1:dev")
+    compileOnly("net.civmc.finale:finale-paper:2.1.0")
 }

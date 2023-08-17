@@ -1,5 +1,6 @@
 package dev.jayms.evergreen.lobby;
 
+import dev.jayms.evergreen.EvergreenConfig;
 import dev.jayms.evergreen.arena.Arena;
 import dev.jayms.evergreen.arena.ArenaManager;
 import dev.jayms.evergreen.arena.ArenaType;
@@ -11,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class LobbyListener implements Listener {
@@ -21,10 +23,16 @@ public class LobbyListener implements Listener {
     }
 
     @EventHandler
+    public void onRespawn(PlayerRespawnEvent event) {
+        event.setRespawnLocation(EvergreenConfig.getSpawn());
+    }
+
+    @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Arena arena = ArenaManager.getArena(event.getPlayer().getLocation());
         if (arena == null) {
             enterLobby(event.getPlayer());
+            event.getPlayer().teleport(EvergreenConfig.getSpawn());
         }
     }
 

@@ -15,7 +15,7 @@ public class KitListener implements Listener {
 
         if (event.getItem().getType() == Material.BOOK) {
             event.getPlayer().getInventory().removeItem(event.getItem());
-            DefaultKits.noDebuff().load(event.getPlayer());
+            DefaultKits.elytraKit().load(event.getPlayer());
         }
     }
 

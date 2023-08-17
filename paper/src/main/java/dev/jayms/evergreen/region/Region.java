@@ -37,6 +37,30 @@ public class Region {
         this.z2 = z2;
     }
 
+    public int getX1() {
+        return x1;
+    }
+
+    public int getY1() {
+        return y1;
+    }
+
+    public int getZ1() {
+        return z1;
+    }
+
+    public int getX2() {
+        return x2;
+    }
+
+    public int getY2() {
+        return y2;
+    }
+
+    public int getZ2() {
+        return z2;
+    }
+
     public void print(Player player) {
         player.sendMessage(String.format("Min: %d, %d, %d", getMinX(), getMinY(), getMinZ()));
         player.sendMessage(String.format("Max: %d, %d, %d", getMaxX(), getMaxY(), getMaxZ()));

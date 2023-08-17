@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -33,6 +34,15 @@ public class ArenaListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         insideArena.remove(event.getPlayer().getUniqueId());
+    }
+
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        Player player = event.getPlayer();
+        Arena arena = ArenaManager.getArena(player.getLocation());
+        if (arena != null && arena.getType() == ArenaType.FFA) {
+            event.getDrops().clear();
+        }
     }
 
     @EventHandler
